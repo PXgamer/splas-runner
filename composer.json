@@ -11,14 +11,14 @@
         }
     ],
     "authors": {
-		"issues": "https://github.com/pxgamer/splas-runner/issues"
+        "issues": "https://github.com/pxgamer/splas-runner/issues"
     },
-	"repositories": [
-		{
+    "repositories": [
+        {
             "type": "git",
             "url": "https://github.com/pxgamer/splas-runner.git"
         }
-	],
+    ],
     "require": {
         "pxgamer/splas-php": "^1.0"
     }
