@@ -6,9 +6,9 @@ _Note: This is designed for Windows only._
 
 ## Usage
 
-Clone the repository using `git clone https://github.com/PXgamer/splas-runner.git`.  
-Run `composer install` in the root directory.  
-Add your [Unsplash.com][us] API key on [line 14][l14] of the [runner.php][runner] file.  
+- Clone the repository using `git clone https://github.com/PXgamer/splas-runner.git`.  
+- Run `composer install` in the root directory.  
+- Add your [Unsplash.com][us] API key on [line 14][l14] of the [runner.php][runner] file.  
 
 All credit for images and API goes to [Unsplash][us].  
 The [wallpaper.exe][wallpaper] credit goes to [@sindresorhus][sindresorhus].  
