@@ -2,7 +2,7 @@
     "name": "pxgamer/splas-runner",
     "description": "A php cron runner to change the desktop background.",
     "type": "project",
-	"homepage": "https://github.com/pxgamer/splas-runner"
+    "homepage": "https://github.com/pxgamer/splas-runner",
     "license": "MIT",
     "authors": [
         {
