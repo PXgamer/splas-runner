@@ -27,25 +27,31 @@ while (true)
 
 	$rand = json_decode($splas->getRandom());
 
-	$file_img = "backgrounds/".uniqid('bg-') . ".jpg";
+
+	if (isset($rand->urls->raw)) {
+		$file_img = "backgrounds/".uniqid('bg-') . ".jpg";
+		
+		echo "\nGrabbing image: $file_img";
+
+		$ch = curl_init();
+		$fp = fopen($file_img, 'wb');
+
+		curl_setopt($ch, CURLOPT_URL, $rand->urls->raw);
+		curl_setopt($ch, CURLOPT_FILE, $fp);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+		$data = curl_exec($ch);
+
+		curl_close($ch);
+		fclose($fp);
+
+		exec('wallpaper ' . $file_img);
+	} else {
+		echo 'Error grabbing image!';
+	}
 	
-	echo "\nGrabbing image: $file_img";
-
-	$ch = curl_init();
-	$fp = fopen($file_img, 'wb');
-
-	curl_setopt($ch, CURLOPT_URL, $rand->urls->raw);
-	curl_setopt($ch, CURLOPT_FILE, $fp);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-	$data = curl_exec($ch);
-
-	curl_close($ch);
-	fclose($fp);
-
-	exec('wallpaper ' . $file_img);
 	if (!$interval) exit;
 	sleep($interval * 60);
 }
