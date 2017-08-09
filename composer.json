@@ -1,6 +1,6 @@
 {
   "name": "pxgamer/splas-runner",
-  "description": "A php cron runner to change the desktop background.",
+  "description": "A cross-platform binary to change the desktop background from Unsplash.",
   "type": "library",
   "license": "MIT",
   "bin": [
