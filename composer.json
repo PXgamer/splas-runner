@@ -3,6 +3,9 @@
   "description": "A php cron runner to change the desktop background.",
   "type": "project",
   "license": "MIT",
+  "bin": [
+    "bin/splasr"
+  ],
   "autoload": {
     "psr-4": {
       "pxgamer\\SplasRunner\\": "src/"
