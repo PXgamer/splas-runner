@@ -1,7 +1,7 @@
 {
   "name": "pxgamer/splas-runner",
   "description": "A php cron runner to change the desktop background.",
-  "type": "project",
+  "type": "library",
   "license": "MIT",
   "bin": [
     "bin/splasr"
