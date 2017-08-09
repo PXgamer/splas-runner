@@ -64,7 +64,7 @@ class RunCommand extends Command
             ->addOption('keep', 'k', InputOption::VALUE_NONE,
                 'Whether to keep all downloaded images. Defaults to remove.')
             ->addOption('key', null, InputOption::VALUE_REQUIRED,
-                'Whether to keep all downloaded images. Defaults to remove.');
+                'Your Unsplash API key. Defaults to use the `UNSPLASH_API_KEY` environment variable if not provided.');
     }
 
     /**
