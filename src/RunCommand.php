@@ -172,7 +172,7 @@ class RunCommand extends Command
     }
 
     /**
-     * Set the wallpaper for supported operating systems, otherwise exit.
+     * Set the wallpaper for supported operating systems, otherwise throw ErrorException.
      *
      * @param string $imagePath
      * @return bool
@@ -192,7 +192,10 @@ class RunCommand extends Command
         }
 
         if (stristr(PHP_OS, 'LINUX')) {
-            // Linux not supported yet
+            // Attempt to change background for Linux (via GSettings)
+            exec('gsettings set org.gnome.desktop.background picture-uri "file://' . $imagePath . '"');
+
+            return true;
         }
 
         throw new \ErrorException(self::ERROR_UNSUPPORTED_OS);
