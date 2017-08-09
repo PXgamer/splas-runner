@@ -9,6 +9,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class RunCommand
+ * @package pxgamer\SplasRunner
+ */
 class RunCommand extends Command
 {
     const ERROR_DOWNLOADING_IMAGE = 'Error downloading the image.';
@@ -94,6 +98,9 @@ class RunCommand extends Command
         $this->interval > 0 ? $this->runOnInterval() : $this->runOnce();
     }
 
+    /**
+     * Run the download only once
+     */
     private function runOnce()
     {
         $this->clearBackgroundsDirectory();
@@ -101,6 +108,9 @@ class RunCommand extends Command
         $this->downloadImage();
     }
 
+    /**
+     * Run the download on a loop
+     */
     private function runOnInterval()
     {
         set_time_limit(0);
@@ -114,6 +124,9 @@ class RunCommand extends Command
         }
     }
 
+    /**
+     * Download the actual image file and then change the background
+     */
     private function downloadImage()
     {
         $client = new splas($this->apiKey);
@@ -158,6 +171,13 @@ class RunCommand extends Command
         }
     }
 
+    /**
+     * Set the wallpaper if on Windows, otherwise exit.
+     *
+     * @param string $imagePath
+     * @return bool
+     * @throws \ErrorException
+     */
     private function changeWallpaper($imagePath)
     {
         if (DIRECTORY_SEPARATOR === '\\') {
@@ -166,13 +186,14 @@ class RunCommand extends Command
             return true;
         }
 
-        $this->output->writeln([
-            '<error>' . self::ERROR_NON_WINDOWS . '</error>'
-        ]);
-
-        return false;
+        throw new \ErrorException(self::ERROR_NON_WINDOWS);
     }
 
+    /**
+     * Set the relative background directory
+     *
+     * @return string
+     */
     private function getBackgroundsDirectory()
     {
         $this->backgroundDirectory = __DIR__ . '/../resources/backgrounds/';
@@ -180,6 +201,11 @@ class RunCommand extends Command
         return $this->backgroundDirectory;
     }
 
+    /**
+     * Clear the backgrounds directory if 'keep' option isn't specified
+     *
+     * @return bool
+     */
     private function clearBackgroundsDirectory()
     {
         if (!$this->keepImages) {
