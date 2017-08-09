@@ -11,7 +11,7 @@ OS      | Supported?
 ------- | ----------
 Windows | ✓
 Mac OSX | ✗
-Ubuntu  | ✗
+Ubuntu  | ✓
 Linux   | ✗
 
 _Note: Running in an unsupported OS will result in an ErrorException._
