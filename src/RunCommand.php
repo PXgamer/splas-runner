@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RunCommand extends Command
 {
     const ERROR_DOWNLOADING_IMAGE = 'Error downloading the image.';
+    const ERROR_NON_WINDOWS = 'This is not a Windows system. Exiting.';
 
     /**
      * The path to the backgrounds directory
@@ -161,7 +162,15 @@ class RunCommand extends Command
     {
         if (DIRECTORY_SEPARATOR === '\\') {
             exec(__DIR__ . '/../resources/bin/wallpaper ' . $imagePath);
+
+            return true;
         }
+
+        $this->output->writeln([
+            '<error>' . self::ERROR_NON_WINDOWS . '</error>'
+        ]);
+
+        return false;
     }
 
     private function getBackgroundsDirectory()
