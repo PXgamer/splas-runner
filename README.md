@@ -2,10 +2,20 @@
 
 A php cron runner to change the desktop background. (uses the [splas-php][splas] composer package)
 
+[![Build Status](https://travis-ci.org/PXgamer/splas-runner.svg?branch=master)](https://travis-ci.org/PXgamer/splas-runner)
 [![Version](https://img.shields.io/packagist/v/pxgamer/splas-runner.svg)](https://packagist.org/p/pxgamer/splas-runner)
 [![License](https://img.shields.io/packagist/l/pxgamer/splas-runner.svg)](https://opensource.org/licenses/mit-license)
 
-_Note: This is designed for Windows only. Running in another OS will result in an ErrorException._
+## Supported operating systems
+
+OS      | Supported?
+------- | ----------
+Windows | ✓
+Mac OSX | ✗
+Ubuntu  | ✓
+Linux   | ✗
+
+_Note: Running in an unsupported OS will result in an ErrorException._
 
 ## Usage
 
@@ -25,7 +35,7 @@ Name | Description
 ## Credits
 
 All credit for images and API goes to [Unsplash][us].  
-The [wallpaper.exe][wallpaper] credit goes to [@sindresorhus][sindresorhus].  
+The [wallpaper.exe](resources/bin) ([repo][wallpaper]) credit goes to [@sindresorhus][sindresorhus].  
 
 [us]: https://unsplash.com
 [wallpaper]: https://github.com/sindresorhus/win-wallpaper

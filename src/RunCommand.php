@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RunCommand extends Command
 {
     const ERROR_DOWNLOADING_IMAGE = 'Error downloading the image.';
-    const ERROR_NON_WINDOWS = 'This is not a Windows system. Exiting.';
+    const ERROR_UNSUPPORTED_OS = 'This operating system is not supported.';
 
     /**
      * The path to the backgrounds directory
@@ -172,7 +172,7 @@ class RunCommand extends Command
     }
 
     /**
-     * Set the wallpaper if on Windows, otherwise exit.
+     * Set the wallpaper for supported operating systems, otherwise throw ErrorException.
      *
      * @param string $imagePath
      * @return bool
@@ -180,13 +180,25 @@ class RunCommand extends Command
      */
     private function changeWallpaper($imagePath)
     {
-        if (DIRECTORY_SEPARATOR === '\\') {
-            exec(__DIR__ . '/../resources/bin/wallpaper ' . $imagePath);
+        if (stristr(PHP_OS, 'DAR')) {
+            // Mac not supported yet
+        }
+
+        if (stristr(PHP_OS, 'WIN')) {
+            // Run Windows executable to change background
+            exec(__DIR__ . '/../resources/bin/wallpaper "' . $imagePath . '"');
 
             return true;
         }
 
-        throw new \ErrorException(self::ERROR_NON_WINDOWS);
+        if (stristr(PHP_OS, 'LINUX')) {
+            // Attempt to change background for Linux (via GSettings)
+            exec('gsettings set org.gnome.desktop.background picture-uri "file://' . $imagePath . '"');
+
+            return true;
+        }
+
+        throw new \ErrorException(self::ERROR_UNSUPPORTED_OS);
     }
 
     /**
