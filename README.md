@@ -2,6 +2,9 @@
 
 A php cron runner to change the desktop background. (uses the [splas-php][splas] composer package)
 
+[![Version](https://img.shields.io/packagist/v/pxgamer/splas-runner.svg)](https://packagist.org/p/pxgamer/splas-runner)
+[![License](https://img.shields.io/packagist/l/pxgamer/splas-runner.svg)](https://opensource.org/licenses/mit-license)
+
 _Note: This is designed for Windows only. Running in another OS will result in an ErrorException._
 
 ## Usage
