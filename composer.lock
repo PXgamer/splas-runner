@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "38643743d19fa7f132c7a4b09ead7f23",
+    "content-hash": "1401b86e440b938726d82f60a8c2c24a",
     "packages": [
         {
             "name": "psr/log",
@@ -55,16 +55,16 @@
         },
         {
             "name": "pxgamer/splas-php",
-            "version": "v1.0.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PXgamer/splas-php.git",
-                "reference": "1b828bb93ab8c1ebb38b3373678c984c54fc6611"
+                "reference": "574b7d1a58d2e132a013f33606f82f539ee4ae8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PXgamer/splas-php/zipball/1b828bb93ab8c1ebb38b3373678c984c54fc6611",
-                "reference": "1b828bb93ab8c1ebb38b3373678c984c54fc6611",
+                "url": "https://api.github.com/repos/PXgamer/splas-php/zipball/574b7d1a58d2e132a013f33606f82f539ee4ae8e",
+                "reference": "574b7d1a58d2e132a013f33606f82f539ee4ae8e",
                 "shasum": ""
             },
             "require": {
@@ -74,23 +74,15 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "pxgamer\\": "src/"
+                    "pxgamer\\Splas\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PXgamer",
-                    "email": "owzie123@gmail.com",
-                    "role": "Developer"
-                }
-            ],
             "description": "A simple PHP wrapper for utilising the Unsplash api.",
-            "homepage": "https://github.com/PXgamer/splas-php",
-            "time": "2016-12-12T15:35:40+00:00"
+            "time": "2017-08-11T11:06:11+00:00"
         },
         {
             "name": "symfony/console",
