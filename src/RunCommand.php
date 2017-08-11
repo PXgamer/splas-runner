@@ -133,7 +133,7 @@ class RunCommand extends Command
 
         $selectedImage = $client->getRandom();
 
-        $rawUrl = $selectedImage->urls->raw ?? false;
+        $rawUrl = $selectedImage['urls']['raw'] ?? false;
 
         if ($rawUrl) {
             $fileName = uniqid('bg-') . ".jpg";
