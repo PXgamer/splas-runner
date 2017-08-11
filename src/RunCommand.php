@@ -2,7 +2,7 @@
 
 namespace pxgamer\SplasRunner;
 
-use pxgamer\splas;
+use pxgamer\Splas\Splas;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -129,9 +129,9 @@ class RunCommand extends Command
      */
     private function downloadImage()
     {
-        $client = new splas($this->apiKey);
+        $client = new Splas($this->apiKey);
 
-        $selectedImage = json_decode($client->getRandom());
+        $selectedImage = $client->getRandom();
 
         $rawUrl = $selectedImage->urls->raw ?? false;
 
