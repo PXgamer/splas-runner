@@ -136,8 +136,8 @@ class RunCommand extends Command
         $rawUrl = $selectedImage['urls']['raw'] ?? false;
 
         if ($rawUrl) {
-            $fileName = uniqid('bg-') . ".jpg";
-            $outputDirectory = $this->backgroundDirectory . $fileName;
+            $fileName = $selectedImage['id'];
+            $outputDirectory = $this->backgroundDirectory . $fileName . ".jpg";
 
             $this->output->writeln([
                 'Grabbing image: <comment>' . $fileName . '</comment>'
