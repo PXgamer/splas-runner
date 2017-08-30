@@ -140,7 +140,8 @@ class RunCommand extends Command
             $outputDirectory = $this->backgroundDirectory . $fileName;
 
             $this->output->writeln([
-                '<info>Grabbing image: ' . $fileName . '.</info>'
+                'Grabbing image: <comment>' . $fileName . '</comment>'
+                . ' uploaded by <comment>' . $selectedImage['user']['name'] . ' (@' . $selectedImage['user']['username'] . ')</comment>.'
             ]);
 
             $ch = curl_init();
