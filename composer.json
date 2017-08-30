@@ -16,6 +16,6 @@
     "pxgamer/splas-php": "^3.0.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6.3.0"
+    "phpunit/phpunit": "^5.7.21 || ^6.3.0"
   }
 }
