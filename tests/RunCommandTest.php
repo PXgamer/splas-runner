@@ -28,7 +28,7 @@ class RunCommandTest extends TestCase
 
         // Check that the runner attempted to/did download an image
         $this->assertRegExp(
-            '/Grabbing image: |Error downloading the image./',
+            '/([a-z0-9_-]+? by .*?)|Error downloading the image./i',
             $commandBody
         );
     }
