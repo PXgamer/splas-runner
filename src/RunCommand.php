@@ -89,8 +89,15 @@ class RunCommand extends Command
         $this->getBackgroundsDirectory();
 
         $output->writeln([
-            '<comment>Press Ctrl+C to exit at any time.</comment>',
-            ''
+            $this->getApplication()->getName() . ' <info>' . $this->getApplication()->getVersion() . '</info>',
+            '',
+            'Photos from https://unsplash.com',
+            '',
+        ]);
+
+        $output->writeln([
+            '<info>Press Ctrl+C to exit at any time.</info>',
+            '',
         ]);
 
         $this->output = $output;
@@ -140,8 +147,9 @@ class RunCommand extends Command
             $outputDirectory = $this->backgroundDirectory . $fileName . ".jpg";
 
             $this->output->writeln([
-                'Grabbing image: <comment>' . $fileName . '</comment>'
-                . ' uploaded by <comment>' . $selectedImage['user']['name'] . ' (@' . $selectedImage['user']['username'] . ')</comment>.'
+                '<comment>' . $fileName . '</comment>'
+                . ' by <comment>' . $selectedImage['user']['name']
+                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>.'
             ]);
 
             $ch = curl_init();
