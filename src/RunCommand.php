@@ -149,7 +149,7 @@ class RunCommand extends Command
             $this->output->writeln([
                 '<comment>' . $fileName . '</comment>'
                 . ' by <comment>' . $selectedImage['user']['name']
-                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>.'
+                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>'
             ]);
 
             $ch = curl_init();
