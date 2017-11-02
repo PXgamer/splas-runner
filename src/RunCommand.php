@@ -70,7 +70,7 @@ class RunCommand extends Command
     /**
      * Execute the command.
      *
-     * @param  \Symfony\Component\Console\Input\InputInterface $input
+     * @param  \Symfony\Component\Console\Input\InputInterface   $input
      * @param  \Symfony\Component\Console\Output\OutputInterface $output
      * @return void
      * @throws \ErrorException
@@ -133,6 +133,7 @@ class RunCommand extends Command
 
     /**
      * Download the actual image file and then change the background
+     * @throws \ErrorException
      */
     private function downloadImage()
     {
@@ -149,7 +150,7 @@ class RunCommand extends Command
             $this->output->writeln([
                 '<comment>' . $fileName . '</comment>'
                 . ' by <comment>' . $selectedImage['user']['name']
-                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>'
+                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>',
             ]);
 
             $ch = curl_init();
@@ -158,11 +159,9 @@ class RunCommand extends Command
             curl_setopt_array(
                 $ch,
                 [
-                    CURLOPT_URL => $rawUrl,
-                    CURLOPT_FILE => $fp,
+                    CURLOPT_URL    => $rawUrl,
+                    CURLOPT_FILE   => $fp,
                     CURLOPT_HEADER => 0,
-                    CURLOPT_SSL_VERIFYHOST => 0,
-                    CURLOPT_SSL_VERIFYPEER => 0,
                 ]
             );
 
@@ -175,7 +174,7 @@ class RunCommand extends Command
             $this->changeWallpaper($outputDirectory);
         } else {
             $this->output->writeln([
-                '<error>' . self::ERROR_DOWNLOADING_IMAGE . '</error>'
+                '<error>' . self::ERROR_DOWNLOADING_IMAGE . '</error>',
             ]);
         }
     }
