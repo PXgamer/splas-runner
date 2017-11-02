@@ -2,7 +2,7 @@
 
 A cross-platform binary to change the desktop background from Unsplash. (uses the [splas-php][splas] composer package)
 
-[![Build Status](https://travis-ci.org/PXgamer/splas-runner.svg?branch=master)](https://travis-ci.org/PXgamer/splas-runner)
+[![Build Status](https://travis-ci.org/pxgamer/splas-runner.svg?branch=master)](https://travis-ci.org/pxgamer/splas-runner)
 [![Version](https://img.shields.io/packagist/v/pxgamer/splas-runner.svg)](https://packagist.org/p/pxgamer/splas-runner)
 [![License](https://img.shields.io/packagist/l/pxgamer/splas-runner.svg)](https://opensource.org/licenses/mit-license)
 
