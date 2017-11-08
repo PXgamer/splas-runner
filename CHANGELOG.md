@@ -4,6 +4,19 @@ All notable changes to `splas-runner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v3.0.0 - 2017-08-11
+
+### Added
+- Updated to use `splas-php` ^4.0
+- Updated style of README
+- Added additional missing project files
+- Updated the test suite
+
+## v2.0.7 - 2017-08-11
+
+### Fixed
+- Fixed bug with switch of object to array
+
 ## v2.0.6 - 2017-08-11
 
 ### Fixed
