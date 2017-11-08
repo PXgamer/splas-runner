@@ -59,12 +59,24 @@ class RunCommand extends Command
         $this
             ->setName('run')
             ->setDescription('Run the Splas Runner.')
-            ->addOption('interval', 'i', InputOption::VALUE_REQUIRED,
-                'The required interval. Defaults to execute once then close.')
-            ->addOption('keep', 'k', InputOption::VALUE_NONE,
-                'Whether to keep all downloaded images. Defaults to remove.')
-            ->addOption('key', null, InputOption::VALUE_REQUIRED,
-                'Your Unsplash API key. Defaults to use the `UNSPLASH_API_KEY` environment variable if not provided.');
+            ->addOption(
+                'interval',
+                'i',
+                InputOption::VALUE_REQUIRED,
+                'The required interval. Defaults to execute once then close.'
+            )
+            ->addOption(
+                'keep',
+                'k',
+                InputOption::VALUE_NONE,
+                'Whether to keep all downloaded images. Defaults to remove.'
+            )
+            ->addOption(
+                'key',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Your Unsplash API key. Defaults to use the `UNSPLASH_API_KEY` environment variable if not provided.'
+            );
     }
 
     /**
@@ -229,7 +241,6 @@ class RunCommand extends Command
     private function clearBackgroundsDirectory()
     {
         if (!$this->keepImages) {
-
             $iterator = new \DirectoryIterator($this->backgroundDirectory);
             foreach ($iterator as $file) {
                 if ($file->isDot() || $file->isDot()) {
