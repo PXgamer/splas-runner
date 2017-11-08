@@ -1,7 +1,8 @@
 <?php
 
+namespace pxgamer\SplasRunner;
+
 use PHPUnit\Framework\TestCase;
-use pxgamer\SplasRunner\RunCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -21,7 +22,7 @@ class RunCommandTest extends TestCase
 
         $commandTester->execute(
             [
-                'command' => $command->getName()
+                'command' => $command->getName(),
             ]
         );
         $commandBody = $commandTester->getDisplay();

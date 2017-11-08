@@ -6,16 +6,28 @@
     "bin": [
         "bin/splasr"
     ],
-    "autoload": {
-        "psr-4": {
-            "pxgamer\\SplasRunner\\": "src/"
-        }
-    },
     "require": {
-        "symfony/console": "^3.3.6",
-        "pxgamer/splas-php": "^3.0.0"
+        "php": "^7.1",
+        "symfony/console": "^3.3",
+        "pxgamer/splas-php": "^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.3.0"
+        "phpunit/phpunit": "^6.4",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "pxgamer\\SplasRunner\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "pxgamer\\SplasRunner\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
     }
 }
