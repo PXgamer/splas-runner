@@ -4,6 +4,16 @@ All notable changes to `splas-runner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v1.1.2 - 2017-12-06
+
+### Fixed
+- Corrected legal name in license
+
+## v3.0.1 - 2017-11-20
+
+### Fixed
+- Corrected the format of the license file
+
 ## v3.0.0 - 2017-08-11
 
 ### Added
