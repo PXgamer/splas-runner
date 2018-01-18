@@ -85,7 +85,7 @@ class RunCommand extends Command
      * @param  \Symfony\Component\Console\Input\InputInterface   $input
      * @param  \Symfony\Component\Console\Output\OutputInterface $output
      * @return void
-     * @throws \ErrorException
+     * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -119,6 +119,7 @@ class RunCommand extends Command
 
     /**
      * Run the download only once
+     * @throws \ErrorException
      */
     private function runOnce()
     {
@@ -129,6 +130,7 @@ class RunCommand extends Command
 
     /**
      * Run the download on a loop
+     * @throws \ErrorException
      */
     private function runOnInterval()
     {
@@ -226,10 +228,15 @@ class RunCommand extends Command
      * Set the relative background directory
      *
      * @return string
+     * @throws \Exception
      */
     private function getBackgroundsDirectory()
     {
-        $this->backgroundDirectory = __DIR__.'/../resources/backgrounds/';
+        $this->backgroundDirectory = Environment::getSplasRunnerDirectory();
+
+        if (!is_dir($this->backgroundDirectory)) {
+            mkdir($this->backgroundDirectory);
+        }
 
         return $this->backgroundDirectory;
     }
