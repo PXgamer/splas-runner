@@ -85,7 +85,7 @@ class RunCommand extends Command
      * @param  \Symfony\Component\Console\Input\InputInterface   $input
      * @param  \Symfony\Component\Console\Output\OutputInterface $output
      * @return void
-     * @throws \ErrorException
+     * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -101,7 +101,7 @@ class RunCommand extends Command
         $this->getBackgroundsDirectory();
 
         $output->writeln([
-            $this->getApplication()->getName() . ' <info>' . $this->getApplication()->getVersion() . '</info>',
+            $this->getApplication()->getName().' <info>'.$this->getApplication()->getVersion().'</info>',
             '',
             'Photos from https://unsplash.com',
             '',
@@ -119,6 +119,7 @@ class RunCommand extends Command
 
     /**
      * Run the download only once
+     * @throws \ErrorException
      */
     private function runOnce()
     {
@@ -129,6 +130,7 @@ class RunCommand extends Command
 
     /**
      * Run the download on a loop
+     * @throws \ErrorException
      */
     private function runOnInterval()
     {
@@ -157,12 +159,12 @@ class RunCommand extends Command
 
         if ($rawUrl) {
             $fileName = $selectedImage['id'];
-            $outputDirectory = $this->backgroundDirectory . $fileName . ".jpg";
+            $outputDirectory = $this->backgroundDirectory.$fileName.".jpg";
 
             $this->output->writeln([
-                '<comment>' . $fileName . '</comment>'
-                . ' by <comment>' . $selectedImage['user']['name']
-                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>',
+                '<comment>'.$fileName.'</comment>'
+                .' by <comment>'.$selectedImage['user']['name']
+                .' ('.$selectedImage['user']['links']['html'].')</comment>',
             ]);
 
             $ch = curl_init();
@@ -186,7 +188,7 @@ class RunCommand extends Command
             $this->changeWallpaper($outputDirectory);
         } else {
             $this->output->writeln([
-                '<error>' . self::ERROR_DOWNLOADING_IMAGE . '</error>',
+                '<error>'.self::ERROR_DOWNLOADING_IMAGE.'</error>',
             ]);
         }
     }
@@ -206,14 +208,15 @@ class RunCommand extends Command
 
         if (stristr(PHP_OS, 'WIN')) {
             // Run Windows executable to change background
-            exec(__DIR__ . '/../resources/bin/wallpaper "' . $imagePath . '"');
+            exec('reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "'.$imagePath.'" /f');
+            exec('rundll32.exe user32.dll,UpdatePerUserSystemParameters');
 
             return true;
         }
 
         if (stristr(PHP_OS, 'LINUX')) {
             // Attempt to change background for Linux (via GSettings)
-            exec('gsettings set org.gnome.desktop.background picture-uri "file://' . $imagePath . '"');
+            exec('gsettings set org.gnome.desktop.background picture-uri "file://'.$imagePath.'"');
 
             return true;
         }
@@ -225,10 +228,15 @@ class RunCommand extends Command
      * Set the relative background directory
      *
      * @return string
+     * @throws \Exception
      */
     private function getBackgroundsDirectory()
     {
-        $this->backgroundDirectory = __DIR__ . '/../resources/backgrounds/';
+        $this->backgroundDirectory = Environment::getSplasRunnerDirectory();
+
+        if (!is_dir($this->backgroundDirectory)) {
+            mkdir($this->backgroundDirectory);
+        }
 
         return $this->backgroundDirectory;
     }
@@ -246,7 +254,7 @@ class RunCommand extends Command
                 if ($file->isDot() || $file->isDot()) {
                     continue;
                 }
-                unlink($this->backgroundDirectory . $file->current());
+                unlink($this->backgroundDirectory.$file->current());
             }
         }
 
