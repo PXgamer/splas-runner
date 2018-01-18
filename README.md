@@ -74,7 +74,6 @@ If you discover any security related issues, please email owzie123@gmail.com ins
 
 - [pxgamer][link-author]
 - [Unsplash][us]
-- [@sindresorhus][sindresorhus] (for [wallpaper.exe])
 - [All Contributors][link-contributors]
 
 ## License
@@ -97,6 +96,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-contributors]: ../../contributors
 
 [us]: https://unsplash.com
-[wallpaper.exe]: https://github.com/sindresorhus/win-wallpaper
-[sindresorhus]: https://github.com/sindresorhus
 [splas]: https://github.com/pxgamer/splas-php

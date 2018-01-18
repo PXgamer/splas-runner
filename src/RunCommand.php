@@ -206,7 +206,8 @@ class RunCommand extends Command
 
         if (stristr(PHP_OS, 'WIN')) {
             // Run Windows executable to change background
-            exec(__DIR__ . '/../resources/bin/wallpaper "' . $imagePath . '"');
+            exec('reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "'.$imagePath.'" /f');
+            exec('rundll32.exe user32.dll,UpdatePerUserSystemParameters');
 
             return true;
         }
