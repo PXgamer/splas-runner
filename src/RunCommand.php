@@ -101,7 +101,7 @@ class RunCommand extends Command
         $this->getBackgroundsDirectory();
 
         $output->writeln([
-            $this->getApplication()->getName() . ' <info>' . $this->getApplication()->getVersion() . '</info>',
+            $this->getApplication()->getName().' <info>'.$this->getApplication()->getVersion().'</info>',
             '',
             'Photos from https://unsplash.com',
             '',
@@ -157,12 +157,12 @@ class RunCommand extends Command
 
         if ($rawUrl) {
             $fileName = $selectedImage['id'];
-            $outputDirectory = $this->backgroundDirectory . $fileName . ".jpg";
+            $outputDirectory = $this->backgroundDirectory.$fileName.".jpg";
 
             $this->output->writeln([
-                '<comment>' . $fileName . '</comment>'
-                . ' by <comment>' . $selectedImage['user']['name']
-                . ' (' . $selectedImage['user']['links']['html'] . ')</comment>',
+                '<comment>'.$fileName.'</comment>'
+                .' by <comment>'.$selectedImage['user']['name']
+                .' ('.$selectedImage['user']['links']['html'].')</comment>',
             ]);
 
             $ch = curl_init();
@@ -186,7 +186,7 @@ class RunCommand extends Command
             $this->changeWallpaper($outputDirectory);
         } else {
             $this->output->writeln([
-                '<error>' . self::ERROR_DOWNLOADING_IMAGE . '</error>',
+                '<error>'.self::ERROR_DOWNLOADING_IMAGE.'</error>',
             ]);
         }
     }
@@ -214,7 +214,7 @@ class RunCommand extends Command
 
         if (stristr(PHP_OS, 'LINUX')) {
             // Attempt to change background for Linux (via GSettings)
-            exec('gsettings set org.gnome.desktop.background picture-uri "file://' . $imagePath . '"');
+            exec('gsettings set org.gnome.desktop.background picture-uri "file://'.$imagePath.'"');
 
             return true;
         }
@@ -229,7 +229,7 @@ class RunCommand extends Command
      */
     private function getBackgroundsDirectory()
     {
-        $this->backgroundDirectory = __DIR__ . '/../resources/backgrounds/';
+        $this->backgroundDirectory = __DIR__.'/../resources/backgrounds/';
 
         return $this->backgroundDirectory;
     }
@@ -247,7 +247,7 @@ class RunCommand extends Command
                 if ($file->isDot() || $file->isDot()) {
                     continue;
                 }
-                unlink($this->backgroundDirectory . $file->current());
+                unlink($this->backgroundDirectory.$file->current());
             }
         }
 
