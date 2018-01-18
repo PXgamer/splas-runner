@@ -4,6 +4,12 @@ All notable changes to `splas-runner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v3.1.0 - 2018-01-18
+
+### Changed
+- Changed to use a `~/.splasr` directory to store background images
+- Changed the Windows method to use a registry edit ([#2](https://github.com/pxgamer/splas-runner/issues/2))
+
 ## v3.0.3 - 2018-01-15
 
 ### Added
