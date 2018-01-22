@@ -251,7 +251,7 @@ class RunCommand extends Command
         if (!$this->keepImages) {
             $iterator = new \DirectoryIterator($this->backgroundDirectory);
             foreach ($iterator as $file) {
-                if ($file->isDot() || $file->isDot()) {
+                if ($file->isDot() || $file->isDot() || $file->getExtension() !== 'jpg') {
                     continue;
                 }
                 unlink($this->backgroundDirectory.$file->current());
