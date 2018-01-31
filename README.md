@@ -13,7 +13,6 @@ A cross-platform binary to change the desktop background from Unsplash. (uses th
 
 ```
 bin/
-resources/
 src/
 tests/
 vendor/
@@ -23,8 +22,14 @@ vendor/
 
 Via Composer
 
-``` bash
+```bash
 $ composer global require pxgamer/splas-runner
+```
+
+Via Phive
+
+```bash
+$ phive install pxgamer/splas-runner
 ```
 
 ## Usage
