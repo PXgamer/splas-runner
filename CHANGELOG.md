@@ -4,6 +4,17 @@ All notable changes to `splas-runner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v3.2.0 - 2018-01-31
+
+### Added
+- Added Phive install instructions to the README
+
+### Changed
+- Changed to use `webmozart/path-util` for cross-system home dir checking
+
+### Removed
+- Removed the `Environment` class
+
 ## v3.1.0 - 2018-01-18
 
 ### Changed
