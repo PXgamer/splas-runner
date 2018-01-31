@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
+use Webmozart\PathUtil\Path;
 
 /**
  * Class RunCommand
@@ -17,6 +18,7 @@ class RunCommand extends Command
 {
     const ERROR_DOWNLOADING_IMAGE = 'Error downloading the image.';
     const ERROR_UNSUPPORTED_OS = 'This operating system is not supported.';
+    const SPLASR_DIRECTORY = '.splasr';
 
     /**
      * The path to the backgrounds directory
@@ -159,7 +161,7 @@ class RunCommand extends Command
 
         if ($rawUrl) {
             $fileName = $selectedImage['id'];
-            $outputDirectory = $this->backgroundDirectory.$fileName.".jpg";
+            $outputDirectory = $this->backgroundDirectory.DIRECTORY_SEPARATOR.$fileName.".jpg";
 
             $this->output->writeln([
                 '<comment>'.$fileName.'</comment>'
@@ -232,7 +234,7 @@ class RunCommand extends Command
      */
     private function getBackgroundsDirectory()
     {
-        $this->backgroundDirectory = Environment::getSplasRunnerDirectory();
+        $this->backgroundDirectory = Path::getHomeDirectory().DIRECTORY_SEPARATOR.self::SPLASR_DIRECTORY;
 
         if (!is_dir($this->backgroundDirectory)) {
             mkdir($this->backgroundDirectory);
@@ -254,7 +256,7 @@ class RunCommand extends Command
                 if ($file->isDot() || $file->isDot() || $file->getExtension() !== 'jpg') {
                     continue;
                 }
-                unlink($this->backgroundDirectory.$file->current());
+                unlink($this->backgroundDirectory.DIRECTORY_SEPARATOR.$file->current());
             }
         }
 
