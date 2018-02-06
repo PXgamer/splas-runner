@@ -12,7 +12,6 @@ use Webmozart\PathUtil\Path;
 
 /**
  * Class RunCommand
- * @package pxgamer\SplasRunner
  */
 class RunCommand extends Command
 {
