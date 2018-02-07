@@ -11,7 +11,10 @@ class Application extends BaseApplication
 
     public function __construct($name = null, $version = null)
     {
-        parent::__construct($name ?: static::NAME, $version ?: (static::VERSION === '@' . 'git-version@' ? 'source' : static::VERSION));
+        parent::__construct(
+            $name ?: static::NAME,
+            $version ?: (static::VERSION === '@' . 'git-version@' ? 'source' : static::VERSION)
+        );
     }
 
     protected function getDefaultCommands()
