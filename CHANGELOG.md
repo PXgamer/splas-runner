@@ -4,6 +4,14 @@ All notable changes to `splas-runner` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## v3.3.0 - 2018-02-08
+
+### Added
+- Add PHP 7.2 testing through Travis
+- Update the dependency range for PHPUnit and PHP_CodeSniffer
+- Add support for Symfony Console v4.*
+- Change to use Box Phar version from Git tags
+
 ## v3.2.0 - 2018-01-31
 
 ### Added

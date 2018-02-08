@@ -10,6 +10,7 @@ class RunCommandTest extends TestCase
 {
     /**
      * Test for whether an image can be downloaded
+     * @throws \Exception
      */
     public function testCanDownloadImage()
     {
