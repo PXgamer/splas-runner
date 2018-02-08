@@ -8,7 +8,7 @@
     ],
     "require": {
         "php": "^7.1",
-        "symfony/console": "^3.3",
+        "symfony/console": "^3.0 || ^4.0",
         "pxgamer/splas-php": "^4.0",
         "webmozart/path-util": "^2.3"
     },
