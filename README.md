@@ -7,16 +7,8 @@
 [![Code Coverage][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-A cross-platform binary to change the desktop background from Unsplash. (uses the [splas-php][splas] composer package)
-
-## Structure
-
-```
-bin/
-src/
-tests/
-vendor/
-```
+A cross-platform binary to change the desktop background from [Unsplash]. (uses the [splas-php] composer 
+package)
 
 ## Install
 
@@ -34,9 +26,9 @@ $ phive install pxgamer/splas-runner
 
 ## Usage
 
-- Get an API key from [Unsplash][us]
+- Get an API key from [Unsplash]
 - Either set the `UNSPLASH_API_KEY` environment variable, or provide a `--key {key}` option in the command
-- Run the binary using `splasr run [options]`
+- Run the binary using `splasr [options]`
 
 #### Options
 
@@ -78,7 +70,7 @@ If you discover any security related issues, please email owzie123@gmail.com ins
 ## Credits
 
 - [pxgamer][link-author]
-- [Unsplash][us]
+- [Unsplash]
 - [All Contributors][link-contributors]
 
 ## License
@@ -100,5 +92,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/pxgamer
 [link-contributors]: ../../contributors
 
-[us]: https://unsplash.com
-[splas]: https://github.com/pxgamer/splas-php
+[unsplash]: https://unsplash.com
+[splas-php]: https://github.com/pxgamer/splas-php
