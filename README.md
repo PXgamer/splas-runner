@@ -36,7 +36,7 @@ $ phive install pxgamer/splas-runner
 
 - Get an API key from [Unsplash][us]
 - Either set the `UNSPLASH_API_KEY` environment variable, or provide a `--key {key}` option in the command
-- Run the binary using `splasr run [options]`
+- Run the binary using `splasr [options]`
 
 #### Options
 
