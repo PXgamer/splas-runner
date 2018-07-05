@@ -2,7 +2,7 @@
 
 All notable changes to `splas-runner` will be documented in this file.
 
-Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) principles.
 
 ## v4.0.0 - 2018-05-09
 
