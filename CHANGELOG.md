@@ -7,7 +7,7 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) princip
 ## v4.0.0 - 2018-05-09
 
 ### Changed
-- Moved the `splasr run` command to be the default (and only) command
+- Move the `splasr run` command to be the default (and only) command
 
 ## v3.3.0 - 2018-02-08
 
@@ -20,90 +20,92 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) princip
 ## v3.2.0 - 2018-01-31
 
 ### Added
-- Added Phive install instructions to the README
+- Add Phive install instructions to the README
 
 ### Changed
-- Changed to use `webmozart/path-util` for cross-system home dir checking
+- Change to use `webmozart/path-util` for cross-system home dir checking
 
 ### Removed
-- Removed the `Environment` class
+- Remove the `Environment` class
 
 ## v3.1.0 - 2018-01-18
 
 ### Changed
-- Changed to use a `~/.splasr` directory to store background images
-- Changed the Windows method to use a registry edit ([#2](https://github.com/pxgamer/splas-runner/issues/2))
+- Change to use a `~/.splasr` directory to store background images
+- Change the Windows method to use a registry edit ([#2](https://github.com/pxgamer/splas-runner/issues/2))
 
 ## v3.0.3 - 2018-01-15
 
 ### Added
-- Added Box support
+- Add Box support
 
 ## v3.0.2 - 2017-12-06
 
 ### Fixed
-- Corrected legal name in license
+- Correct legal name in license
 
 ## v3.0.1 - 2017-11-20
 
 ### Fixed
-- Corrected the format of the license file
+- Correct the format of the license file
 
 ## v3.0.0 - 2017-08-11
 
 ### Added
-- Updated to use `splas-php` ^4.0
-- Updated style of README
-- Added additional missing project files
-- Updated the test suite
+- Update to use `splas-php` ^4.0
+- Update style of README
+- Add additional missing project files
+- Update the test suite
 
 ## v2.0.7 - 2017-08-11
 
 ### Fixed
-- Fixed bug with switch of object to array
+- Fix bug with switch of object to array
 
 ## v2.0.6 - 2017-08-11
 
 ### Fixed
-- Updated to use `splas-php` v3.0.0
+- Update to use `splas-php` v3.0.0
 
 ## v2.0.5 - 2017-08-09
 
 ### Fixed
-- Updated package description
+- Update package description
 
 ## v2.0.4 - 2017-08-09
 
 ### Fixed
-- Changed Composer type to 'library' instead of a 'project'
+- Change Composer type to 'library' instead of a 'project'
 
 ## v2.0.3 - 2017-08-09
 
 ### Added
-- Added Ubuntu support
-- Added OS support table to README
+- Add Ubuntu support
+- Add OS support table to README
 
 ## v2.0.2 - 2017-08-09
 
 ### Added
-- Fixed typo in command help
+- Fix typo in command help
 
 ## v2.0.1 - 2017-08-09
 
 ### Fixed
-- Updated version number in CLI
+- Update version number in CLI
 
 ## v2.0.1 - 2017-08-09
 
 ### Added
-- Added badges
+- Add badges
 
 ## v2.0.0 - 2017-08-09
 
 ### Added
-- Travis CI testing
-- PHPUnit test suite
-- Changed to be a binary package (`splasr`)
+- Add Travis CI testing
+- Add PHPUnit test suite
+
+### Changed
+- Change to be a binary package (`splasr`)
 
 ## v1.0.0 - 2017-03-07
 
