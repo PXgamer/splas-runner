@@ -2,6 +2,7 @@
 
 namespace pxgamer\SplasRunner;
 
+use GuzzleHttp\Client;
 use pxgamer\Splas\Splas;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -164,7 +165,7 @@ class RunCommand extends Command
 
         if ($rawUrl) {
             $fileName = $selectedImage['id'];
-            $outputDirectory = $this->backgroundDirectory.DIRECTORY_SEPARATOR.$fileName.".jpg";
+            $outputPath = $this->backgroundDirectory.DIRECTORY_SEPARATOR.$fileName.".jpg";
 
             $this->output->writeln([
                 '<comment>'.$fileName.'</comment>'
@@ -172,28 +173,19 @@ class RunCommand extends Command
                 .' ('.$selectedImage['user']['links']['html'].')</comment>',
             ]);
 
-            $ch = curl_init();
-            $fp = fopen($outputDirectory, 'wb');
-
-            curl_setopt_array(
-                $ch,
+            $guzzleClient = new Client();
+            $guzzleClient->get(
+                $rawUrl,
                 [
-                    CURLOPT_URL    => $rawUrl,
-                    CURLOPT_FILE   => $fp,
-                    CURLOPT_HEADER => 0,
+                    'sink' => $outputPath,
                 ]
             );
 
-            curl_exec($ch);
+            if (file_exists($outputPath)) {
+                $this->changeWallpaper($outputPath);
 
-            // Close connections
-            curl_close($ch);
-            fclose($fp);
-
-
-            $this->changeWallpaper($outputDirectory);
-
-            return;
+                return;
+            }
         }
 
         $this->output->writeln([
@@ -208,7 +200,7 @@ class RunCommand extends Command
      * @return bool
      * @throws \ErrorException
      */
-    private function changeWallpaper($imagePath): bool
+    private function changeWallpaper(string $imagePath): bool
     {
         if (stristr(PHP_OS, 'DAR')) {
             // Mac not supported yet
