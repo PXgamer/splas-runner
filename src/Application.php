@@ -22,7 +22,7 @@ class Application extends BaseApplication
     {
         parent::__construct(
             $name ?: static::NAME,
-            $version ?: (static::VERSION === '@' . 'git-version@' ? 'source' : static::VERSION)
+            $version ?: (static::VERSION === '@'.'git-version@' ? 'source' : static::VERSION)
         );
     }
 

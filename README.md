@@ -7,8 +7,8 @@
 [![Code Coverage][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-A cross-platform binary to change the desktop background from [Unsplash]. (uses the [splas-php] composer 
-package)
+A cross-platform binary to change the desktop background from [Unsplash].  
+This package uses the [splas-php] composer package.
 
 ## Install
 

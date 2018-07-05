@@ -2,6 +2,7 @@
 
 namespace pxgamer\SplasRunner;
 
+use GuzzleHttp\Client;
 use pxgamer\Splas\Splas;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -55,7 +56,7 @@ class RunCommand extends Command
      *
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('run')
@@ -88,7 +89,7 @@ class RunCommand extends Command
      * @return void
      * @throws \Exception
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $this->apiKey = $input->getOption('key') ?? getenv('UNSPLASH_API_KEY');
 
@@ -119,10 +120,11 @@ class RunCommand extends Command
     }
 
     /**
-     * Run the download only once
+     * Run the download only once.
+     * @return void
      * @throws \ErrorException
      */
-    private function runOnce()
+    private function runOnce(): void
     {
         $this->clearBackgroundsDirectory();
 
@@ -130,10 +132,11 @@ class RunCommand extends Command
     }
 
     /**
-     * Run the download on a loop
+     * Run the download on a loop.
+     * @return void
      * @throws \ErrorException
      */
-    private function runOnInterval()
+    private function runOnInterval(): void
     {
         set_time_limit(0);
 
@@ -142,15 +145,17 @@ class RunCommand extends Command
 
             $this->downloadImage();
 
-            sleep($this->interval * 60); // Sleep for number of minutes
+            // Sleep for the number of minutes
+            sleep($this->interval * 60);
         }
     }
 
     /**
-     * Download the actual image file and then change the background
+     * Download the actual image file and then change the background.
+     * @return void
      * @throws \ErrorException
      */
-    private function downloadImage()
+    private function downloadImage(): void
     {
         $client = new Splas($this->apiKey);
 
@@ -160,7 +165,7 @@ class RunCommand extends Command
 
         if ($rawUrl) {
             $fileName = $selectedImage['id'];
-            $outputDirectory = $this->backgroundDirectory.DIRECTORY_SEPARATOR.$fileName.".jpg";
+            $outputPath = $this->backgroundDirectory.DIRECTORY_SEPARATOR.$fileName.".jpg";
 
             $this->output->writeln([
                 '<comment>'.$fileName.'</comment>'
@@ -168,30 +173,24 @@ class RunCommand extends Command
                 .' ('.$selectedImage['user']['links']['html'].')</comment>',
             ]);
 
-            $ch = curl_init();
-            $fp = fopen($outputDirectory, 'wb');
-
-            curl_setopt_array(
-                $ch,
+            $guzzleClient = new Client();
+            $guzzleClient->get(
+                $rawUrl,
                 [
-                    CURLOPT_URL    => $rawUrl,
-                    CURLOPT_FILE   => $fp,
-                    CURLOPT_HEADER => 0,
+                    'sink' => $outputPath,
                 ]
             );
 
-            curl_exec($ch);
+            if (file_exists($outputPath)) {
+                $this->changeWallpaper($outputPath);
 
-            // Close connections
-            curl_close($ch);
-            fclose($fp);
-
-            $this->changeWallpaper($outputDirectory);
-        } else {
-            $this->output->writeln([
-                '<error>'.self::ERROR_DOWNLOADING_IMAGE.'</error>',
-            ]);
+                return;
+            }
         }
+
+        $this->output->writeln([
+            '<error>'.self::ERROR_DOWNLOADING_IMAGE.'</error>',
+        ]);
     }
 
     /**
@@ -201,7 +200,7 @@ class RunCommand extends Command
      * @return bool
      * @throws \ErrorException
      */
-    private function changeWallpaper($imagePath)
+    private function changeWallpaper(string $imagePath): bool
     {
         if (stristr(PHP_OS, 'DAR')) {
             // Mac not supported yet
@@ -226,12 +225,12 @@ class RunCommand extends Command
     }
 
     /**
-     * Set the relative background directory
+     * Set the relative background directory.
      *
      * @return string
      * @throws \Exception
      */
-    private function getBackgroundsDirectory()
+    private function getBackgroundsDirectory(): string
     {
         $this->backgroundDirectory = Path::getHomeDirectory().DIRECTORY_SEPARATOR.self::SPLASR_DIRECTORY;
 
@@ -245,9 +244,9 @@ class RunCommand extends Command
     /**
      * Clear the backgrounds directory if 'keep' option isn't specified
      *
-     * @return bool
+     * @return void
      */
-    private function clearBackgroundsDirectory()
+    private function clearBackgroundsDirectory(): void
     {
         if (!$this->keepImages) {
             $iterator = new \DirectoryIterator($this->backgroundDirectory);
@@ -258,7 +257,5 @@ class RunCommand extends Command
                 unlink($this->backgroundDirectory.DIRECTORY_SEPARATOR.$file->current());
             }
         }
-
-        return true;
     }
 }
