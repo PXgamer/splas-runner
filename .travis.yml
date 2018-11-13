@@ -21,6 +21,18 @@ before_script:
 script:
   - vendor/bin/phpcs --standard=psr2 src/
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - vendor/bin/box compile
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+    provider: releases
+    api_key:
+        secure: $GITHUB_DEPLOY_KEY
+    file: bin/splasr.phar
+    skip_cleanup: true
+    on:
+        repo: pxgamer/splas-runner
+        tags: true
+        php: '7.1'
