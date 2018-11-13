@@ -6,6 +6,11 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) princip
 
 ## [Unreleased]
 
+## [v4.1.1] - 2018-07-05
+
+### Changed
+- Update to use automated Phar releases using Travis
+
 ## [v4.1.0] - 2018-07-05
 
 ### Added
@@ -123,6 +128,7 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) princip
 - Initial release of Composer package
 
 [Unreleased]: https://github.com/pxgamer/splas-runner/compare/master...develop
+[v4.1.1]: https://github.com/pxgamer/splas-runner/compare/v4.1.0...v4.1.1
 [v4.1.0]: https://github.com/pxgamer/splas-runner/compare/v4.0.0...v4.1.0
 [v4.0.0]: https://github.com/pxgamer/splas-runner/compare/v3.3.0...v4.0.0
 [v3.3.0]: https://github.com/pxgamer/splas-runner/compare/v3.2.0...v3.3.0
