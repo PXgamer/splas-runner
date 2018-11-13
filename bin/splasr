@@ -7,5 +7,9 @@ if (file_exists(__DIR__.'/../../../autoload.php')) {
 }
 
 $app = new pxgamer\SplasRunner\Application();
-$app->setDefaultCommand('run', true);
-$app->run();
+try {
+    $app->setDefaultCommand('run', true);
+    $app->run();
+} catch (\Exception $exception) {
+    exit($exception->getMessage());
+}
