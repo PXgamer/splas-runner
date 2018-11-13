@@ -6,7 +6,7 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com) princip
 
 ## [Unreleased]
 
-## [v4.1.1] - 2018-07-05
+## [v4.1.1] - 2018-11-13
 
 ### Changed
 - Update to use automated Phar releases using Travis
